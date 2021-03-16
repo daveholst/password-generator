@@ -2,9 +2,9 @@
 let generateBtn = document.querySelector("#generate");
 let lengthInput = document.querySelector('#password-length')
 
-// Write password to the #password input
-function generatePassword() {
-  let passwordLength = lengthInput.value;
+// Generate password of desired length
+function generatePassword(length) {
+  let passwordLength = length;
   let characterSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let specialCharacterSet = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
   let allChar = characterSet + specialCharacterSet;
@@ -16,8 +16,9 @@ function generatePassword() {
   return generated;
 }
 
+// Write password to the #password input
 function writePassword() {
-  let password = generatePassword();
+  let password = generatePassword(lengthInput.value);
   let passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
