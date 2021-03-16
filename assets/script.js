@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var textArea = document.querySelector('#password');
 
 //Password class constructor -- not sure about the initialization of this.password?
 class Password{
@@ -57,20 +58,19 @@ function writePassword() {
     writePassword();
   }
   //Collect number & Special information
-
-
-
-
-
   raw.useNumSpecial = prompt('Do you want to use numbers, symbols or both', 'both');
-
+  validated.useNumber = raw.useNumSpecial.match(/(num)/gi) ? true : false;
+  validated.useSpecial = raw.useNumSpecial.match(/(sym)/gi) ? true : false;
+  if (raw.useNumSpecial.match(/(both)/gi)) {
+    validated.useNumber = true;
+    validated.useSpecial = true;
+  }
+  //logout object raw & validated
   console.log(PassCriteria);
-
-  let useLower;
-  let useUpper;
-  let useNumbers;
-  let useSpecials;
-
+  //Generate Password
+  myPass = new Password(validated.passLength, validated.useLower, validated.useUpper, validated.useNumber, validated.useSpecial)
+  //write password to textArea
+  textArea.value = myPass.password;
 
 }
 
