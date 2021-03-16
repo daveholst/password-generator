@@ -71,11 +71,7 @@ function writePassword() {
   myPass = new Password(validated.passLength, validated.useLower, validated.useUpper, validated.useNumber, validated.useSpecial)
   //write password to textArea
   textArea.value = myPass.password;
-
 }
-
-
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", () => {
@@ -85,7 +81,7 @@ generateBtn.addEventListener("click", () => {
     textArea.value = myPass.generate();
   }
 });
-
+// Add event listener to criteria button
 criteriaBtn.addEventListener("click", () => {
   writePassword()
 });
