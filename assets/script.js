@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var textArea = document.querySelector('#password');
-
+var criteriaBtn = document.querySelector('#criteria')
 //Password class constructor -- not sure about the initialization of this.password?
 class Password{
   constructor(length, useLower, useUpper, useNumbers, useSpecials){
@@ -78,5 +78,14 @@ function writePassword() {
 
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", () => {
+  if (!textArea.value) {
+    writePassword();
+  } else {
+    textArea.value = myPass.generate();
+  }
+});
 
+criteriaBtn.addEventListener("click", () => {
+  writePassword()
+});
