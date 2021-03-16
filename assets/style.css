@@ -97,10 +97,6 @@ button[disabled] {
   float: right;
 }
 
-#password-length {
-  width: 85%;
-}
-
 #password {
   -webkit-appearance: none;
   -moz-appearance: none;
