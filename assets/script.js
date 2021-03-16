@@ -1,9 +1,10 @@
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
+let lengthInput = document.querySelector('#password-length')
 
 // Write password to the #password input
-function generatePassword(length = 8) {
-  let passwordLength = length;
+function generatePassword() {
+  let passwordLength = lengthInput.value;
   let characterSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let specialCharacterSet = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
   let allChar = characterSet + specialCharacterSet;
@@ -23,3 +24,9 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+// Add event listener to range length change that updates
+lengthInput.addEventListener("change", () => {
+  currentSelectedLength = lengthInput.value
+  generateBtn.innerText = `Generate Password [${currentSelectedLength}]`;
+})
