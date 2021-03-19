@@ -6,10 +6,10 @@ var criteriaBtn = document.querySelector('#criteria')
 class Password{
   constructor(length, useLower, useUpper, useNumbers, useSpecials){
     this.passwordLength = length;
-    this.useLower = useLower ? useLower : true;
-    this.useUpper = useUpper ? useUpper: true;
-    this.useNumbers = useNumbers ? useNumbers: true;
-    this.useSpecials = useSpecials ? useSpecials: true;
+    this.useLower = useLower;
+    this.useUpper = useUpper;
+    this.useNumbers = useNumbers;
+    this.useSpecials = useSpecials;
     this.lowerCaseChars = 'abcdefghijklmnopqrstuvwxyz';
     this.upperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     this.numberChars = '0123456789';
@@ -21,7 +21,7 @@ class Password{
     let charSet = '';
     let generatedPassword = '';
     charSet += this.useLower ? this.lowerCaseChars : '';
-    charSet += this.useUpper ? this.lowerCaseChars : '';
+    charSet += this.useUpper ? this.upperCaseChars : '';
     charSet += this.useNumbers ? this.numberChars : '';
     charSet += this.useSpecials ? this.specialChars : '';
     // generate password with charset & legth
@@ -58,12 +58,16 @@ function writePassword() {
     writePassword();
   }
   //Collect number & Special information
-  raw.useNumSpecial = prompt('Do you want to use numbers, symbols or both', 'both');
+  raw.useNumSpecial = prompt('Do you want to use numbers, symbols, both or none?', 'both');
   validated.useNumber = raw.useNumSpecial.match(/(num)/gi) ? true : false;
   validated.useSpecial = raw.useNumSpecial.match(/(sym)/gi) ? true : false;
   if (raw.useNumSpecial.match(/(both)/gi)) {
     validated.useNumber = true;
     validated.useSpecial = true;
+  }
+  if (raw.useNumSpecial.match(/(none)/gi)) {
+    validated.useNumber = false;
+    validated.useSpecial = false;
   }
   //logout object raw & validated
   console.log(passCriteria);
