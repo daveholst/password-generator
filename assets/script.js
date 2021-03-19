@@ -33,11 +33,10 @@ class Password{
     return this.password;
   }
 }
-// Write password to the #password input
+// Write password to the #password input -- added destructing
 function writePassword() {
-  let PassCriteria = { raw: {}, validated: {} };
-  let raw = PassCriteria.raw;
-  let validated = PassCriteria.validated;
+  const passCriteria = { raw: {}, validated: {} };
+  const {raw, validated} = passCriteria
   // Collect password length.
   raw.passLength = parseInt(prompt('How long would you like password to be? (8 - 128)', 10));
   if (raw.passLength < 8 || raw.passLength > 128) {
@@ -53,6 +52,7 @@ function writePassword() {
     validated.useLower = true;
     validated.useUpper = true;
   }
+  //alert if both false (must beither upper or lower)
   if (!validated.useLower && !validated.useUpper) {
     alert('You have to choose at least one option!!!');
     writePassword();
@@ -66,9 +66,10 @@ function writePassword() {
     validated.useSpecial = true;
   }
   //logout object raw & validated
-  console.log(PassCriteria);
-  //Generate Password
-  myPass = new Password(validated.passLength, validated.useLower, validated.useUpper, validated.useNumber, validated.useSpecial)
+  console.log(passCriteria);
+  //Generate Password -- added destructing
+  const { passLength, useLower, useUpper, useNumber, useSpecial } = validated;
+  myPass = new Password(passLength, useLower, useUpper, useNumber, useSpecial)
   //write password to textArea
   textArea.value = myPass.password;
 }
