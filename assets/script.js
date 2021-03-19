@@ -1,7 +1,14 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var textArea = document.querySelector('#password');
-var criteriaBtn = document.querySelector('#criteria')
+var lengthInput = document.querySelector('#password-length')
+var lengthHeading = document.querySelector('#length-heading')
+  // checkboxes
+var uppercaseCheck = document.querySelector('#uppercase')
+var lowercaseCheck = document.querySelector('#lowercase')
+var specialsCheck = document.querySelector('#symbols')
+var numbersCheck = document.querySelector('#numbers')
+
 //Password class constructor -- not sure about the initialization of this.password?
 class Password{
   constructor(length, useLower, useUpper, useNumbers, useSpecials){
@@ -38,37 +45,15 @@ function writePassword() {
   const passCriteria = { raw: {}, validated: {} };
   const {raw, validated} = passCriteria
   // Collect password length.
-  raw.passLength = parseInt(prompt('How long would you like password to be? (8 - 128)', 10));
-  if (raw.passLength < 8 || raw.passLength > 128) {
-    alert('Length must be between 8 - 128. ');
-    writePassword();
-  }
-  validated.passLength = raw.passLength;
+  validated.passLength = lengthInput.value;
   //Collect case information
-  raw.useCase = prompt('Did you want to use lowercase, uppercase or both?. You must choose at least one option!', 'both');
-  validated.useLower = raw.useCase.match(/(low)/gi) ? true : false;
-  validated.useUpper = raw.useCase.match(/(up)/gi) ? true : false;
-  if (raw.useCase.match(/(both)/gi)) {
-    validated.useLower = true;
-    validated.useUpper = true;
+  if (!lowercaseCheck.checked && !uppercaseCheck.checked) {
+    lowercaseCheck.checked = true;
   }
-  //alert if both false (must beither upper or lower)
-  if (!validated.useLower && !validated.useUpper) {
-    alert('You have to choose at least one option!!!');
-    writePassword();
-  }
-  //Collect number & Special information
-  raw.useNumSpecial = prompt('Do you want to use numbers, symbols, both or none?', 'both');
-  validated.useNumber = raw.useNumSpecial.match(/(num)/gi) ? true : false;
-  validated.useSpecial = raw.useNumSpecial.match(/(sym)/gi) ? true : false;
-  if (raw.useNumSpecial.match(/(both)/gi)) {
-    validated.useNumber = true;
-    validated.useSpecial = true;
-  }
-  if (raw.useNumSpecial.match(/(none)/gi)) {
-    validated.useNumber = false;
-    validated.useSpecial = false;
-  }
+  validated.useLower = lowercaseCheck.checked;
+  validated.useUpper = uppercaseCheck.checked;
+  validated.useSpecial = specialsCheck.checked;
+  validated.useNumber = numbersCheck.checked;
   //logout object raw & validated
   console.log(passCriteria);
   //Generate Password -- added destructing
@@ -80,13 +65,17 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", () => {
-  if (!textArea.value) {
     writePassword();
-  } else {
-    textArea.value = myPass.generate();
   }
-});
+);
+
+ // update password lenfth in UI
+lengthInput.addEventListener('input', () => {
+  lengthHeading.textContent = `Length - ${lengthInput.value} characters`
+})
+
+
 // Add event listener to criteria button
-criteriaBtn.addEventListener("click", () => {
-  writePassword()
-});
+// criteriaBtn.addEventListener("click", () => {
+//   writePassword()
+// });

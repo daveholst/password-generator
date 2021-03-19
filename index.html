@@ -25,8 +25,24 @@
           ></textarea>
         </div>
         <div class="card-footer">
+          <form action="">
+            <h3 id="length-heading">Length - 12 characters</h3>
+            <span>8</span>
+            <input type="range" name="password-length" id="password-length" value="12" min="8" max="128" />
+            <span>128</span>
+            <h3>Contains</h3>
+            <label for="upper-case">Upper Case: </label>
+            <input type="checkbox" name="upper-case" id="uppercase" />
+            <label for="upper-case">Lower Case: </label>
+            <input type="checkbox" name="lower-case" id="lowercase" checked />
+            <br />
+            <label for="upper-case">Numbers: </label>
+            <input type="checkbox" name="numbers" id="numbers" />
+            <label for="upper-case">Symbols: </label>
+            <input type="checkbox" name="symbols" id="symbols" />
+          </form>
+          <br />
           <button id="generate" class="btn">Generate Password</button>
-          <button id="criteria" class="btn">Change Criteria</button>
         </div>
       </div>
     </div>

@@ -96,6 +96,16 @@ button[disabled] {
   cursor: default;
   background: #c0c7cf;
 }
+/* h3 settings */
+h3 {
+  margin: 10px;
+  /* text-align: left; */
+}
+
+/* setting password slider length */
+#password-length {
+  width: 50vmin;
+}
 
 .float-right {
   float: right;
