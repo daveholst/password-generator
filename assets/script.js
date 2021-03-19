@@ -45,9 +45,9 @@ function writePassword() {
   }
   validated.passLength = raw.passLength;
   //Collect case information
-  raw.useCase = prompt('Did you want to use lowercase, uppercase or both?. You muse choose at least one option!', 'both');
-  validated.useLower = raw.useCase.match(/(lower)/gi) ? true : false;
-  validated.useUpper = raw.useCase.match(/(upper)/gi) ? true : false;
+  raw.useCase = prompt('Did you want to use lowercase, uppercase or both?. You must choose at least one option!', 'both');
+  validated.useLower = raw.useCase.match(/(low)/gi) ? true : false;
+  validated.useUpper = raw.useCase.match(/(up)/gi) ? true : false;
   if (raw.useCase.match(/(both)/gi)) {
     validated.useLower = true;
     validated.useUpper = true;
