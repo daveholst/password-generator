@@ -2,7 +2,7 @@
 
 ## Link
 
-As per the spec: https://daveholst.github.io/password-generator/
+As per the spec: https://daveholst.github.io/password-generator/ \
 Alternative UI [new-ui branch]: https://password.daveholst.dev/
 
 ## Task
