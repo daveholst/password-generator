@@ -48,3 +48,5 @@ WHEN I click the button to generate a password
 - [x] extra feature: have button to change generation criteria
 - [x] extra feature: then have generate re-gen password based on previous criteria settings.
 - [x] explore alternate UI with more modern / easy to use interface.
+- [x] host main-ui branch on alt service (heroku, netlify, etc.)
+- [x] link daveholst.dev subdomain to this verison
