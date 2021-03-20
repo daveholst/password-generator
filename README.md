@@ -1,5 +1,7 @@
 # Password Generator
 
+The original acceptance criteria wanted prompts to appear for the user to input password criteria. I have followed this specification on the main branch and the GitHub pagess link follows that branch. I also created a (in my opinion) much cleaner UI without prompt boxes that still meets the task objective on the new-ui branch. This is available on netlify via daveholst.dev.
+
 ## Link
 
 As per the spec: https://daveholst.github.io/password-generator/ \
